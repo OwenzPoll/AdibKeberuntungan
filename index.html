@@ -45,8 +45,6 @@ box-shadow:0 0 12px rgba(255,80,0,.6)
 .feature-title{font-size:13px;font-weight:700;color:#f5ce01}
 .feature-desc{font-size:11px;color:#bbb}
 
-.live-info{background:#151515;border-left:4px solid #23d300;padding:10px;font-size:13px;margin-bottom:8px}
-
 .btn-wrap{display:flex;gap:10px}
 .btn{
 flex:1;padding:14px;text-align:center;
@@ -63,44 +61,53 @@ border-radius:6px;animation:shake 1.6s infinite
 .comment-box{background:#151515;border-radius:10px;padding:15px}
 .comment-title{font-weight:800;color:#f5ce01;margin-bottom:10px}
 
-.comment{
-border-bottom:1px solid #333;padding:12px 0;
+.comment-item{
+border-bottom:1px solid #333;
+padding:12px 0;
 animation:fadeUp .6s ease both
 }
-.comment:last-child{border:none}
+.comment-item:last-child{border:none}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
-.comment-row{display:flex;gap:10px}
-.comment-content{flex:1}
-
 .comment-name{font-size:13px;font-weight:700;color:#23d300}
+.comment-name span{font-weight:400;color:#bbb}
 .comment-text{font-size:13px;color:#ddd;margin:4px 0}
 .comment-time{font-size:11px;color:#888}
 
-/* AVATAR */
-.avatar{
-width:38px;height:38px;border-radius:50%;
-overflow:hidden;flex-shrink:0;
-box-shadow:0 0 8px rgba(35,211,0,.6);
-animation:avatarPulse 2s infinite
-}
-.avatar amp-img{border-radius:50%}
-@keyframes avatarPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-
-/* REPLY */
-.reply{
-margin-top:6px;margin-left:10px;
-padding-left:10px;border-left:2px solid #23d300
-}
-.reply-name{font-size:12px;font-weight:700;color:#f5ce01}
-.reply-text{font-size:12px;color:#ccc}
-
 .more-label{color:#23d300;font-weight:700;font-size:13px}
 
-/* TABLE */
-.info-table{width:100%;border-collapse:collapse}
-.info-table th,.info-table td{border:1px solid #444;padding:9px 12px;font-size:14px}
-.info-table th{background:#1a1a1a;color:#f5ce01}
+/* LIVE NOTIF MODERN */
+.live-notifications {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 9999;
+  font-family: Arial, sans-serif;
+}
+.live-item {
+  background: rgba(23, 23, 23, 0.95);
+  color: #fff;
+  border-left: 4px solid #23d300;
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  opacity: 0;
+  transform: translateX(100%);
+  animation:slideIn 0.7s forwards;
+}
+.live-item:nth-child(1) { animation-delay: 0.2s; }
+.live-item:nth-child(2) { animation-delay: 1.2s; }
+.live-item:nth-child(3) { animation-delay: 2.2s; }
+.live-icon { font-size:16px; }
+@keyframes slideIn {0%{opacity:0;transform:translateX(100%);}60%{opacity:1;transform:translateX(-10%);}80%{transform:translateX(3%);}100%{transform:translateX(0);}}
 
 .footer{text-align:center;padding:15px 0;font-size:12px;color:#888;border-top:1px solid #333}
 </style>
@@ -144,7 +151,6 @@ padding-left:10px;border-left:2px solid #23d300
   </div>
 </div>
 
-<div <!-- Container notifikasi live -->
 <div class="live-notifications">
   <div class="live-item">
     <span class="live-icon">💰</span>
@@ -159,141 +165,40 @@ padding-left:10px;border-left:2px solid #23d300
     <span class="live-text">Siti • Semarang menang Maxwin 1.500.000</span>
   </div>
 </div>
+
 <div class="comment-box section">
   <div class="comment-title">Komentar Pemain</div>
 
-  <!-- Komentar utama -->
   <div class="comment-item">
     <div class="comment-name">Narji <span>• Ngawi</span></div>
     <div class="comment-text">WD cepet, CS ramah, Mantap terimakasih!!🔥</div>
     <div class="comment-time">2 menit lalu</div>
   </div>
 
-  <!-- Accordion -->
   <amp-accordion animate>
     <section>
       <h4 class="more-label">Lihat Selengkapnya</h4>
       <div>
-
         <div class="comment-item">
           <div class="comment-name">Fuad <span>• Ngawi</span></div>
           <div class="comment-text">Modal 50k dapat free spin langsung 😭🔥</div>
           <div class="comment-time">11 menit lalu</div>
         </div>
-
         <div class="comment-item">
           <div class="comment-name">Jawir <span>• Malang</span></div>
           <div class="comment-text">Pragmaticnya gacor banget, jackpot nyala!</div>
           <div class="comment-time">25 menit lalu</div>
         </div>
-
         <div class="comment-item">
           <div class="comment-name">Eksxam <span>• Depok</span></div>
           <div class="comment-text">Scatter gampang keluar, auto big win 😍</div>
           <div class="comment-time">34 menit lalu</div>
         </div>
-
-        <div class="comment-item">
-          <div class="comment-name">Mr.Ironi <span>• Surabaya</span></div>
-          <div class="comment-text">WD masuk cepat, awalnya ragu 😅</div>
-          <div class="comment-time">48 menit lalu</div>
-        </div>
-
-        <div class="comment-item">
-          <div class="comment-name">Galang Yudis <span>• Tangerang</span></div>
-          <div class="comment-text">Bonus malam ini mantul, free spin nonstop! saking gg nya saya bisa top up free fire!! terimakasih MUKROMA88</div>
-          <div class="comment-time">1 jam lalu</div>
-        </div>
-
-        <div class="comment-item">
-          <div class="comment-name">Agus buntung <span>• Semarang</span></div>
-          <div class="comment-text">Auto-spin lancar, jackpot 2x langsung akhirnya bisa mengobati tangan yang menghilang</div>
-          <div class="comment-time">1 jam lalu</div>
-        </div>
-
-        <div class="comment-item">
-          <div class="comment-name">Botak <span>• Depok</span></div>
-          <div class="comment-text">Scatter nyala terus, modal tipis bisa maxwin akhinya bisa potong rambut,makanya username ku botak!! haha</div>
-          <div class="comment-time">2 jam lalu</div>
-        </div>
-
-        <div class="comment-item">
-          <div class="comment-name">Hendra <span>• Bogor</span></div>
-          <div class="comment-text">Main slot pas santai, bonus nge-bomb!</div>
-          <div class="comment-time">2 jam lalu</div>
-        </div>
-
-        <div class="comment-item">
-          <div class="comment-name">Ilham <span>• Cirebon</span></div>
-          <div class="comment-text">Mega win keluar 2x berturut-turut 😎</div>
-          <div class="comment-time">3 jam lalu</div>
-        </div>
-
-        <div class="comment-item">
-          <div class="comment-name">Joko <span>• Solo</span></div>
-          <div class="comment-text">Main 30 menit udah dapat free spin nonstop</div>
-          <div class="comment-time">3 jam lalu</div>
-        </div>
-
-        <div class="comment-item">
-          <div class="comment-name">Kevin <span>• Batam</span></div>
-          <div class="comment-text">Scatter gampang, jackpot gede 😍</div>
-          <div class="comment-time">4 jam lalu</div>
-        </div>
-
-        <div class="comment-item">
-          <div class="comment-name">Lukman <span>• Padang</span></div>
-          <div class="comment-text">Bonusnya pas malam hari, dapet maxwin mantap</div>
-          <div class="comment-time">4 jam lalu</div>
-        </div>
-
-        <div class="comment-item">
-          <div class="comment-name">Miko <span>• Medan</span></div>
-          <div class="comment-text">Free spin nyala terus, modal dikit bisa jackpot</div>
-          <div class="comment-time">5 jam lalu</div>
-        </div>
-
-        <div class="comment-item">
-          <div class="comment-name">Nanda <span>• Palembang</span></div>
-          <div class="comment-text">Auto spin smooth, bonus masuk terus</div>
-          <div class="comment-time">5 jam lalu</div>
-        </div>
-
-        <div class="comment-item">
-          <div class="comment-name">Oki <span>• Lampung</span></div>
-          <div class="comment-text">Scatter dan free spin nonstop, main puas</div>
-          <div class="comment-time">6 jam lalu</div>
-        </div>
-
-        <div class="comment-item">
-          <div class="comment-name">Putra <span>• Pekanbaru</span></div>
-          <div class="comment-text">Jackpot malam ini keluar, mantap!</div>
-          <div class="comment-time">6 jam lalu</div>
-        </div>
-
-        <div class="comment-item">
-          <div class="comment-name">Rama <span>• Yogyakarta</span></div>
-          <div class="comment-text">Modal kecil dapet free spin banyak 😍</div>
-          <div class="comment-time">7 jam lalu</div>
-        </div>
-
-        <div class="comment-item">
-          <div class="comment-name">Surya rokok<span>• Denpasar</span></div>
-          <div class="comment-text">Slot gacor banget, bonus masuk terus bisa beli rokok surya batangan sambil berak dikamar mandi berjam jam!!</div>
-          <div class="comment-time">8 jam lalu</div>
-        </div>
-
-        <div class="comment-item">
-          <div class="comment-name">Taufik <span>• Makassar</span></div>
-          <div class="comment-text">Spin dikit dapet jackpot, mantap jiwa! bisa beli peralatan tawuran versi terbaru nih 2m!!</div>
-          <div class="comment-time">9 jam lalu</div>
-        </div>
-
       </div>
     </section>
   </amp-accordion>
 </div>
-  
+
 <div class="btn-wrap section">
   <a href="#" class="btn login">LOGIN</a>
   <a href="#" class="btn daftar">DAFTAR</a>
@@ -317,4 +222,3 @@ dengan sistem fair-play dan peluang maxwin tinggi.
 
 </body>
 </html>
-
