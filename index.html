@@ -12,6 +12,7 @@
 <script async src="https://cdn.ampproject.org/v0.js"></script>
 <script async custom-element="amp-anim" src="https://cdn.ampproject.org/v0/amp-anim-0.1.js"></script>
 <script async custom-element="amp-accordion" src="https://cdn.ampproject.org/v0/amp-accordion-0.1.js"></script>
+<script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>
 
 <style amp-boilerplate>
 body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}
@@ -20,104 +21,97 @@ body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-am
 <noscript><style amp-boilerplate>body{animation:none}</style></noscript>
 
 <style amp-custom>
-body{margin:0;font-family:system-ui,sans-serif;background:#0f0f0f;color:#fff}
-.container{max-width:900px;margin:auto;padding:15px}
-.section{margin-bottom:28px}
+/* GENERAL */
+body {margin:0; font-family:system-ui,sans-serif; background:#0f0f0f; color:#fff;}
+.container {max-width:900px; margin:auto; padding:15px;}
+.section {margin-bottom:28px;}
+h1,h2,h3,h4,h5,h6 {margin:0;padding:0;}
 
-.header-logo{text-align:center;padding:15px 0;background:#151515}
-.title-center{text-align:center;font-size:22px;font-weight:800;margin:20px 0;color:#f5ce01}
+/* HEADER */
+.header-logo {text-align:center; padding:15px 0; background:#151515;}
+.title-center {text-align:center; font-size:24px; font-weight:800; margin:20px 0; color:#f5ce01;}
 
-.badge-wrap{text-align:center}
-.badge{
-display:inline-block;background:linear-gradient(45deg,#ff2d2d,#ff7a18);
-padding:6px 16px;font-size:12px;font-weight:700;
-border-radius:20px;animation:pulse 1.6s infinite;
-box-shadow:0 0 12px rgba(255,80,0,.6)
+/* BADGE */
+.badge-wrap {text-align:center;}
+.badge {
+  display:inline-block; background:linear-gradient(45deg,#ff2d2d,#ff7a18);
+  padding:6px 16px; font-size:12px; font-weight:700;
+  border-radius:20px; animation:pulse 1.6s infinite;
+  box-shadow:0 0 12px rgba(255,80,0,.6);
 }
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+@keyframes pulse {0%,100%{opacity:1}50%{opacity:.6}}
 
-.center-image{text-align:center;animation:float 3s ease-in-out infinite}
+/* IMAGE FLOAT */
+.center-image {text-align:center; animation:float 3s ease-in-out infinite;}
 @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
 
-.feature-info{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}
-.feature-box{background:#151515;border:1px solid #262626;border-radius:10px;padding:12px 8px;text-align:center}
-.feature-icon{font-size:26px}
-.feature-title{font-size:13px;font-weight:700;color:#f5ce01}
-.feature-desc{font-size:11px;color:#bbb}
+/* FEATURES */
+.feature-info {display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:15px;}
+.feature-box {background:#151515; border:1px solid #262626; border-radius:10px; padding:12px 8px; text-align:center; transition:all .3s;}
+.feature-box:hover {transform:translateY(-4px); box-shadow:0 6px 12px rgba(0,0,0,.5);}
+.feature-icon {font-size:26px;}
+.feature-title {font-size:13px; font-weight:700; color:#f5ce01;}
+.feature-desc {font-size:11px; color:#bbb;}
 
-.btn-wrap{display:flex;gap:10px}
-.btn{
-flex:1;padding:14px;text-align:center;
-font-weight:700;color:#fff;text-decoration:none;
-border-radius:6px;animation:shake 1.6s infinite
-}
-.login{background:linear-gradient(#ffc536,#998233)}
-.daftar{background:linear-gradient(#23d300,#014f0e)}
+/* BUTTONS */
+.btn-wrap {display:flex; gap:10px;}
+.btn {flex:1; padding:14px; text-align:center; font-weight:700; color:#fff; text-decoration:none; border-radius:6px; animation:shake 1.6s infinite; transition:all .3s;}
+.btn:hover {transform:scale(1.05);}
+.login {background:linear-gradient(#ffc536,#998233);}
+.daftar {background:linear-gradient(#23d300,#014f0e);}
 @keyframes shake{0%,100%{transform:translateX(0)}50%{transform:translateX(2px)}}
 
-.description{font-size:14px;line-height:1.75;color:#ddd;text-align:justify}
+/* DESCRIPTION */
+.description {font-size:14px; line-height:1.75; color:#ddd; text-align:justify;}
 
 /* COMMENTS */
-.comment-box{background:#151515;border-radius:10px;padding:15px}
-.comment-title{font-weight:800;color:#f5ce01;margin-bottom:10px}
-
-.comment-item{
-border-bottom:1px solid #333;
-padding:12px 0;
-animation:fadeUp .6s ease both
-}
-.comment-item:last-child{border:none}
+.comment-box {background:#151515; border-radius:10px; padding:15px;}
+.comment-title {font-weight:800; color:#f5ce01; margin-bottom:10px;}
+.comment-item {border-bottom:1px solid #333; padding:12px 0; animation:fadeUp .6s ease both;}
+.comment-item:last-child{border:none;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
-.comment-name{font-size:13px;font-weight:700;color:#23d300}
-.comment-name span{font-weight:400;color:#bbb}
-.comment-text{font-size:13px;color:#ddd;margin:4px 0}
-.comment-time{font-size:11px;color:#888}
+/* Username color ala sosial media */
+.comment-name {font-size:13px; font-weight:700;}
+.comment-name.username-tiktok {color:#69c9d0;}
+.comment-name.username-yt {color:#ff0000;}
+.comment-name.username-ig {color:#c13584;}
+.comment-name.username-fb {color:#1877f2;}
+.comment-name span {font-weight:400; color:#bbb;}
+.comment-text {font-size:13px; color:#ddd; margin:4px 0;}
+.comment-time {font-size:11px; color:#888;}
+.more-label {color:#23d300; font-weight:700; font-size:13px; cursor:pointer;}
 
-.more-label{color:#23d300;font-weight:700;font-size:13px}
-
-/* LIVE NOTIF MODERN */
-.live-notifications {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 260px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  z-index: 9999;
-  font-family: Arial, sans-serif;
-}
+/* LIVE NOTIFICATIONS */
+.live-notifications {position: fixed; bottom:20px; right:20px; width:280px; display:flex; flex-direction:column; gap:12px; z-index:9999; font-family: Arial, sans-serif;}
 .live-item {
-  background: rgba(23, 23, 23, 0.95);
-  color: #fff;
-  border-left: 4px solid #23d300;
-  border-radius: 8px;
-  padding: 10px 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  opacity: 0;
-  transform: translateX(100%);
-  animation:slideIn 0.7s forwards;
+  background: rgba(23,23,23,0.95); color:#fff; border-left:4px solid #23d300;
+  border-radius:8px; padding:10px 12px; display:flex; justify-content:space-between; align-items:center;
+  gap:8px; font-size:13px; box-shadow:0 4px 12px rgba(0,0,0,0.3);
+  opacity:0; transform:translateX(100%); animation:slideFade 6s ease-in-out forwards;
 }
-.live-item:nth-child(1) { animation-delay: 0.2s; }
-.live-item:nth-child(2) { animation-delay: 1.2s; }
-.live-item:nth-child(3) { animation-delay: 2.2s; }
-.live-icon { font-size:16px; }
-@keyframes slideIn {0%{opacity:0;transform:translateX(100%);}60%{opacity:1;transform:translateX(-10%);}80%{transform:translateX(3%);}100%{transform:translateX(0);}}
+.live-item:nth-child(1){animation-delay:0.4s;}
+.live-item:nth-child(2){animation-delay:2s;}
+.live-item:nth-child(3){animation-delay:4s;}
+.live-icon {font-size:16px;}
+.close-btn {background:transparent; border:none; color:#ff4c4c; font-size:16px; cursor:pointer;}
+@keyframes slideFade {0%{transform:translateX(100%); opacity:0;}10%{transform:translateX(0); opacity:1;}85%{transform:translateX(0); opacity:1;}100%{transform:translateX(100%); opacity:0;}}
 
-.footer{text-align:center;padding:15px 0;font-size:12px;color:#888;border-top:1px solid #333}
+/* TABLE */
+.info-table {width:100%; border-collapse:collapse; margin-top:20px;}
+.info-table th, .info-table td {border:1px solid #444; padding:10px 12px; font-size:14px;}
+.info-table th {background:#1a1a1a; color:#f5ce01; text-align:left;}
+.info-table td {background:#151515; color:#ddd; text-align:left;}
+
+/* FOOTER */
+.footer {text-align:center; padding:15px 0; font-size:12px; color:#888; border-top:1px solid #333;}
 </style>
 </head>
 
 <body>
 
 <div class="header-logo">
-  <amp-img src="https://i.postimg.cc/nV4R2CQC/icon-nh88-mini.png"
-    width="150" height="50" layout="intrinsic"></amp-img>
+  <amp-img src="https://i.postimg.cc/nV4R2CQC/icon-nh88-mini.png" width="150" height="50" layout="intrinsic"></amp-img>
 </div>
 
 <div class="container">
@@ -129,8 +123,7 @@ animation:fadeUp .6s ease both
 </div>
 
 <div class="center-image section">
-  <amp-anim src="https://i.postimg.cc/Y9gV6gK8/1770111317887.png"
-    width="300" height="300" layout="responsive"></amp-anim>
+  <amp-anim src="https://i.postimg.cc/Y9gV6gK8/1770111317887.png" width="300" height="300" layout="responsive"></amp-anim>
 </div>
 
 <div class="feature-info section">
@@ -151,83 +144,23 @@ animation:fadeUp .6s ease both
   </div>
 </div>
 
-<!-- AMP STATE untuk kontrol tampilan -->
 <amp-state id="popupState">
-  <script type="application/json">
-    { "visible": true }
-  </script>
+  <script type="application/json">{ "visible": true }</script>
 </amp-state>
 
-<!-- Live Notifications -->
 <div class="live-notifications" [hidden]="!popupState.visible">
-  <div class="live-item">
-    <span class="live-icon">💰</span>
-    <span class="live-text">Narji • Surakarta WD 3.200.000</span>
-    <button on="tap:AMP.setState({popupState: {visible: false}})" class="close-btn">✖</button>
-  </div>
-  <div class="live-item" style="animation-delay: 2s;">
-    <span class="live-icon">🎉</span>
-    <span class="live-text">Ambatukam • Ngawi selatan Maxwin Crash</span>
-    <button on="tap:AMP.setState({popupState: {visible: false}})" class="close-btn">✖</button>
-  </div>
-  <div class="live-item" style="animation-delay: 4s;">
-    <span class="live-icon">🔥</span>
-    <span class="live-text">Siti • Semarang menang Maxwin 1.500.000</span>
-    <button on="tap:AMP.setState({popupState: {visible: false}})" class="close-btn">✖</button>
-  </div>
+  <div class="live-item"><span class="live-icon">💰</span><span class="live-text">Narji • Surakarta WD 3.200.000</span><button on="tap:AMP.setState({popupState:{visible:false}})" class="close-btn">✖</button></div>
+  <div class="live-item"><span class="live-icon">🎉</span><span class="live-text">Ambatukam • Ngawi selatan Maxwin Crash</span><button on="tap:AMP.setState({popupState:{visible:false}})" class="close-btn">✖</button></div>
+  <div class="live-item"><span class="live-icon">🔥</span><span class="live-text">Siti • Semarang menang Maxwin 1.500.000</span><button on="tap:AMP.setState({popupState:{visible:false}})" class="close-btn">✖</button></div>
 </div>
 
-<style amp-custom>
-.live-notifications {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  z-index: 9999;
-}
-
-.live-item {
-  background: #151515;
-  color: #fff;
-  padding: 12px 16px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-  font-size: 14px;
-  animation: slideFade 6s ease-in-out forwards;
-  opacity: 0;
-}
-
-.live-icon { font-size: 18px; }
-
-.close-btn {
-  background: transparent;
-  border: none;
-  color: #ff4c4c;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-@keyframes slideFade {
-  0% { transform: translateX(100%); opacity: 0; }
-  10% { transform: translateX(0); opacity: 1; }
-  85% { transform: translateX(0); opacity: 1; }
-  100% { transform: translateX(100%); opacity: 0; }
-}
-</style>
-
-<div class="comment-box section">
+<!-- KOMENTAR -->
 <div class="comment-box section">
   <div class="comment-title">Komentar Pemain</div>
 
   <div class="comment-item">
-    <div class="comment-name">Narji <span>• Ngawi</span></div>
-    <div class="comment-text">WD cepet, CS ramah, Mantap terimakasih!!🔥</div>
+    <div class="comment-name username-tiktok">Narji <span>• Ngawi</span></div>
+    <div class="comment-text">WD cepat, CS ramah, Mantap terimakasih!!🔥</div>
     <div class="comment-time">2 menit lalu</div>
   </div>
 
@@ -236,58 +169,51 @@ animation:fadeUp .6s ease both
       <h4 class="more-label">Lihat Selengkapnya</h4>
       <div>
         <div class="comment-item">
-          <div class="comment-name">Fuad <span>• Ngawi</span></div>
+          <div class="comment-name username-yt">Fuad <span>• Ngawi</span></div>
           <div class="comment-text">Modal 50k dapat free spin langsung 😭🔥</div>
           <div class="comment-time">11 menit lalu</div>
         </div>
         <div class="comment-item">
-          <div class="comment-name">Jawir <span>• Malang</span></div>
+          <div class="comment-name username-ig">Jawir <span>• Malang</span></div>
           <div class="comment-text">Pragmaticnya gacor banget, jackpot nyala!</div>
           <div class="comment-time">25 menit lalu</div>
         </div>
         <div class="comment-item">
-          <div class="comment-name">Eksxam <span>• Depok</span></div>
+          <div class="comment-name username-fb">Eksxam <span>• Depok</span></div>
           <div class="comment-text">Scatter gampang keluar, auto big win 😍</div>
           <div class="comment-time">34 menit lalu</div>
         </div>
+
+        <!-- FAKE COMMENTS TAMBAHAN -->
         <div class="comment-item">
-          <div class="comment-name">Mr.Ironi <span>• Surabaya</span></div>
-          <div class="comment-text">WD masuk cepat, awalnya ragu 😅</div>
-          <div class="comment-time">48 menit lalu</div>
+          <div class="comment-name username-tiktok">Budi <span>• Jakarta</span></div>
+          <div class="comment-text">Baru main 20 menit, jackpot udah nyala! 😎</div>
+          <div class="comment-time">5 menit lalu</div>
         </div>
         <div class="comment-item">
-          <div class="comment-name">Galang <span>• Tangerang</span></div>
-          <div class="comment-text">Bonus malam ini mantul, free spin nonstop!</div>
-          <div class="comment-time">1 jam lalu</div>
+          <div class="comment-name username-ig">Siti <span>• Bandung</span></div>
+          <div class="comment-text">Auto spin terus, modal tipis bisa menang besar!</div>
+          <div class="comment-time">10 menit lalu</div>
         </div>
         <div class="comment-item">
-          <div class="comment-name">Agus <span>• Semarang</span></div>
-          <div class="comment-text">Auto-spin lancar, jackpot 2x langsung!</div>
-          <div class="comment-time">1 jam lalu</div>
-        </div>
-        <div class="comment-item">
-          <div class="comment-name">Botak <span>• Depok</span></div>
-          <div class="comment-text">Scatter nyala terus, modal tipis bisa maxwin!</div>
-          <div class="comment-time">2 jam lalu</div>
-        </div>
-        <div class="comment-item">
-          <div class="comment-name">Hendra <span>• Bogor</span></div>
-          <div class="comment-text">Main slot pas santai, bonus nge-bomb!</div>
-          <div class="comment-time">2 jam lalu</div>
-        </div>
-        <div class="comment-item">
-          <div class="comment-name">Ilham <span>• Cirebon</span></div>
-          <div class="comment-text">Mega win keluar 2x berturut-turut 😎</div>
-          <div class="comment-time">3 jam lalu</div>
-        </div>
-        <div class="comment-item">
-          <div class="comment-name">Joko <span>• Solo</span></div>
-          <div class="comment-text">Main 30 menit udah dapat free spin nonstop</div>
-          <div class="comment-time">3 jam lalu</div>
+          <div class="comment-name username-yt">Andi <span>• Surabaya</span></div>
+          <div class="comment-text">CS ramah, WD lancar, mantap bgt!</div>
+          <div class="comment-time">15 menit lalu</div>
         </div>
       </div>
     </section>
   </amp-accordion>
+</div>
+
+<!-- BUTTONS -->
+<div class="btn-wrap section">
+  <a href="#" class="btn login">LOGIN</a>
+  <a href="#" class="btn daftar">DAFTAR</a>
+</div>
+
+<!-- DESCRIPTION -->
+<div class="description section">
+<strong>MUKROMA88</strong> adalah situs slot Pragmatic Play gacor 2026 dengan sistem fair-play dan peluang maxwin tinggi.
 </div>
 
 <!-- TABEL INFORMASI SITUS -->
