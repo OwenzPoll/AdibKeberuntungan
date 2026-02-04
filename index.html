@@ -151,21 +151,77 @@ animation:fadeUp .6s ease both
   </div>
 </div>
 
-<div class="live-notifications">
+<!-- AMP STATE untuk kontrol tampilan -->
+<amp-state id="popupState">
+  <script type="application/json">
+    { "visible": true }
+  </script>
+</amp-state>
+
+<!-- Live Notifications -->
+<div class="live-notifications" [hidden]="!popupState.visible">
   <div class="live-item">
     <span class="live-icon">💰</span>
     <span class="live-text">Narji • Surakarta WD 3.200.000</span>
+    <button on="tap:AMP.setState({popupState: {visible: false}})" class="close-btn">✖</button>
   </div>
-  <div class="live-item">
+  <div class="live-item" style="animation-delay: 2s;">
     <span class="live-icon">🎉</span>
     <span class="live-text">Ambatukam • Ngawi selatan Maxwin Crash</span>
+    <button on="tap:AMP.setState({popupState: {visible: false}})" class="close-btn">✖</button>
   </div>
-  <div class="live-item">
+  <div class="live-item" style="animation-delay: 4s;">
     <span class="live-icon">🔥</span>
     <span class="live-text">Siti • Semarang menang Maxwin 1.500.000</span>
+    <button on="tap:AMP.setState({popupState: {visible: false}})" class="close-btn">✖</button>
   </div>
 </div>
 
+<style amp-custom>
+.live-notifications {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 9999;
+}
+
+.live-item {
+  background: #151515;
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  font-size: 14px;
+  animation: slideFade 6s ease-in-out forwards;
+  opacity: 0;
+}
+
+.live-icon { font-size: 18px; }
+
+.close-btn {
+  background: transparent;
+  border: none;
+  color: #ff4c4c;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+@keyframes slideFade {
+  0% { transform: translateX(100%); opacity: 0; }
+  10% { transform: translateX(0); opacity: 1; }
+  85% { transform: translateX(0); opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+</style>
+
+<div class="comment-box section">
 <div class="comment-box section">
   <div class="comment-title">Komentar Pemain</div>
 
@@ -194,21 +250,47 @@ animation:fadeUp .6s ease both
           <div class="comment-text">Scatter gampang keluar, auto big win 😍</div>
           <div class="comment-time">34 menit lalu</div>
         </div>
+        <div class="comment-item">
+          <div class="comment-name">Mr.Ironi <span>• Surabaya</span></div>
+          <div class="comment-text">WD masuk cepat, awalnya ragu 😅</div>
+          <div class="comment-time">48 menit lalu</div>
+        </div>
+        <div class="comment-item">
+          <div class="comment-name">Galang <span>• Tangerang</span></div>
+          <div class="comment-text">Bonus malam ini mantul, free spin nonstop!</div>
+          <div class="comment-time">1 jam lalu</div>
+        </div>
+        <div class="comment-item">
+          <div class="comment-name">Agus <span>• Semarang</span></div>
+          <div class="comment-text">Auto-spin lancar, jackpot 2x langsung!</div>
+          <div class="comment-time">1 jam lalu</div>
+        </div>
+        <div class="comment-item">
+          <div class="comment-name">Botak <span>• Depok</span></div>
+          <div class="comment-text">Scatter nyala terus, modal tipis bisa maxwin!</div>
+          <div class="comment-time">2 jam lalu</div>
+        </div>
+        <div class="comment-item">
+          <div class="comment-name">Hendra <span>• Bogor</span></div>
+          <div class="comment-text">Main slot pas santai, bonus nge-bomb!</div>
+          <div class="comment-time">2 jam lalu</div>
+        </div>
+        <div class="comment-item">
+          <div class="comment-name">Ilham <span>• Cirebon</span></div>
+          <div class="comment-text">Mega win keluar 2x berturut-turut 😎</div>
+          <div class="comment-time">3 jam lalu</div>
+        </div>
+        <div class="comment-item">
+          <div class="comment-name">Joko <span>• Solo</span></div>
+          <div class="comment-text">Main 30 menit udah dapat free spin nonstop</div>
+          <div class="comment-time">3 jam lalu</div>
+        </div>
       </div>
     </section>
   </amp-accordion>
 </div>
 
-<div class="btn-wrap section">
-  <a href="#" class="btn login">LOGIN</a>
-  <a href="#" class="btn daftar">DAFTAR</a>
-</div>
-
-<div class="description section">
-<strong>MUKROMA88</strong> adalah situs slot Pragmatic Play gacor 2026
-dengan sistem fair-play dan peluang maxwin tinggi.
-</div>
-
+<!-- TABEL INFORMASI SITUS -->
 <table class="info-table section">
 <tr><th colspan="2">INFORMASI SITUS MUKROMA88</th></tr>
 <tr><td>Nama Situs</td><td>MUKROMA88</td></tr>
